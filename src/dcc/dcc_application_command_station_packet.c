@@ -732,7 +732,7 @@ static bool _acc_basic_cv_common(dcc_packet_t *packet, uint16_t board_address, u
     /* One-shot send: same bug as _cv_ops_common() (see its comment) -- these
      * accessory CV ops-mode builders have no caller anywhere in this library
      * yet, so a repeat_count = 0 that silently drops every packet before
-     * transmission was never caught. 2026-09-24: fixed alongside the same
+     * transmission was never caught. Fixed alongside the same
      * write/verify split S-9.2.1 p.9 requires for the loco POM builders --
      * two identical packets for a write, one for a verify. */
     packet->repeat_count = is_write ? DCC_REPEAT_CV_WRITE : DCC_REPEAT_CV_VERIFY;
@@ -780,7 +780,7 @@ static bool _acc_extended_cv_common(dcc_packet_t *packet, uint16_t address, uint
 
     packet->preamble_bits = DCC_PREAMBLE_BITS_OPS;
     /* Same never-sent bug and the same write/verify split as
-     * _acc_basic_cv_common() above -- see its 2026-09-24 comment. */
+     * _acc_basic_cv_common() above -- see its comment. */
     packet->repeat_count = is_write ? DCC_REPEAT_CV_WRITE : DCC_REPEAT_CV_VERIFY;
 
     return true;
